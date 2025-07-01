@@ -1,5 +1,5 @@
 function Stats() {
-    return <footer>
+    return <footer className={'stats'}>
         <em>
             💼 You have X items on your list, and you already packed Y (Z%)
         </em>
