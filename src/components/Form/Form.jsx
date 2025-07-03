@@ -1,7 +1,31 @@
-function Form() {
-    return <div className={'add-form'}>
+import {useState} from "react";
+
+function Form({items}) {
+    const [description, setDescription] = useState("")
+    const [quantity, setQuantity] = useState(1)
+
+    function handleSubmit(e) {
+        e.preventDefault()
+        if (!description.trim()) return
+        const id = items.length
+        items.push({id: id, description, quantity})
+        console.log(items)
+        setDescription('')
+        setQuantity(1)
+    }
+
+    const options = Array.from({length: 20}, (el, i) => i + 1)
+    return <form className={'add-form'} onSubmit={handleSubmit}>
         <h3>What do you need for you 😍 trip?</h3>
-    </div>
+        <select value={quantity} onChange={(e) => setQuantity(+e.target.value)}>
+            {options.map((num) => <option value={num} key={num}>{num}</option>)}
+        </select>
+        <input required type={'text'} placeholder={'Item...'} value={description}
+               onChange={(e) => {
+                   setDescription(e.target.value)
+               }}/>
+        <button>Add</button>
+    </form>
 }
 
 export default Form

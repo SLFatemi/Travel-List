@@ -12,7 +12,7 @@ const initialItems = [
 function App() {
     return <div className={'app'}>
         <Logo/>
-        <Form/>
+        <Form items={initialItems}/>
         <PackingList items={initialItems}/>
         <Stats/>
     </div>
