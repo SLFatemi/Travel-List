@@ -1,15 +1,21 @@
 import {useState} from "react";
 
-function Form({items}) {
+function Form({items, setItems}) {
     const [description, setDescription] = useState("")
     const [quantity, setQuantity] = useState(1)
+
+
+    function handleAddItem(item) {
+        setItems(i => [...i, item])
+    }
 
     function handleSubmit(e) {
         e.preventDefault()
         if (!description.trim()) return
-        const id = items.length
-        items.push({id: id, description, quantity})
-        console.log(items)
+        const id = Date.now()
+
+        handleAddItem({id: id, description, quantity, packed: false})
+
         setDescription('')
         setQuantity(1)
     }
