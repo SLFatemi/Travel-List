@@ -1,6 +1,6 @@
 import {useState} from "react";
 
-function Form({items, setItems}) {
+function Form({setItems}) {
     const [description, setDescription] = useState("")
     const [quantity, setQuantity] = useState(1)
 
